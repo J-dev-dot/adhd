@@ -236,7 +236,7 @@ html, body { width: 100%; background: #1a1a1a; font-family: 'Inter', sans-serif;
       </div>
       <div class="contact-line">
         <div class="contact-label">Email</div>
-        <div class="contact-value"><a href="/cdn-cgi/l/email-protection#483a2725292666222d2c3a23273f21292308292c202c3f293a3b293f663824" style="color:rgba(255,255,255,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="81f3eeece0efafebe4e5f3eaeef6e8e0eac1e0e5e9e5f6e0f3f2e0f6aff1ed">[email&#160;protected]</span></a></div>
+        <div class="contact-value"><a href="#" id="email-link" style="color:rgba(255,255,255,0.65);text-decoration:none;">roman.jedrkowiak@adhdwarsaw.pl</a></div>
       </div>
       <div class="contact-line">
         <div class="contact-label">Tel</div>
@@ -255,7 +255,7 @@ html, body { width: 100%; background: #1a1a1a; font-family: 'Inter', sans-serif;
   </div>
 
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 var PAGES = ['p1','p2','p3','uslugi','onas','adhd','kontakt'];
 
 function showPage(id) {
@@ -266,6 +266,16 @@ function showPage(id) {
   var target = document.getElementById('page-' + id);
   if (target) target.classList.add('active');
 }
+
+// Set email link via JS to avoid Cloudflare obfuscation
+document.addEventListener('DOMContentLoaded', function() {
+  var el = document.getElementById('email-link');
+  if (el) {
+    var u = 'roman.jedrkowiak';
+    var d = 'adhdwarsaw.pl';
+    el.href = 'mailto:' + u + '@' + d;
+  }
+});
 </script>
 </body>
 </html>
