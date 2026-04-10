@@ -45,8 +45,7 @@ a{text-decoration:none;color:inherit;}
 .page.active{display:flex;}
 
 /* BLOCKS shared styles */
-.blocks{display:grid;grid-template-rows:repeat(3,1fr);flex:1;min-height:0;}
-#page-home{flex:1;display:flex;flex-direction:column;min-height:calc(100vh - 80px);}
+.blocks{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));flex:1;min-height:0;}
 .block{position:relative;overflow:hidden;display:flex;flex-direction:column;
   justify-content:flex-start;padding:14px 14px 14px 22px;cursor:pointer;
   transition:filter .25s;min-height:110px;}
@@ -148,6 +147,32 @@ a{text-decoration:none;color:inherit;}
 @media (max-width:599px){
   .inner-page{padding:20px 18px;}
   .block{min-height:100px;}
+}
+
+/* ── MOBILE HOME: one block fills full screen ── */
+@media (max-width:767px) {
+  /* page-home fills viewport minus nav */
+  #page-home {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+  }
+  /* blocks fill all available height */
+  #page-home .blocks {
+    flex: 1;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    min-height: 0;
+  }
+  /* each block: no min-height override, let grid decide */
+  #page-home .block {
+    min-height: 0;
+  }
+  /* hide desktop-panel on mobile */
+  .desktop-panel { display: none !important; }
+  /* nav font size +30% on mobile */
+  .nav-sub { font-size: 0.975rem; }
 }
 </style>
 </head>
