@@ -155,19 +155,53 @@ a{text-decoration:none;color:inherit;}
   .desktop-panel { display: none !important; }
   /* nav links +30% bigger */
   .nav-sub { font-size: 0.975rem; }
-  /* page-home when active: full screen, blocks fill it */
-  #page-home.active {
-    height: calc(100vh - 60px);
-    flex-direction: column;
+
+  /* app = full viewport, no scroll */
+  .app {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
   }
+
+  /* mobile-layout fills remaining space after nav */
+  #mobile-layout {
+    display: flex !important;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* page-home active: fill all space */
+  #page-home.active {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* blocks: fill page-home exactly, no scroll */
   #page-home.active .blocks {
     flex: 1;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     min-height: 0;
+    overflow: hidden;
   }
+
   #page-home.active .block {
     min-height: 0;
+    overflow: hidden;
+  }
+
+  /* subpages: fill all space, allow scroll inside */
+  .page.active:not(#page-home) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
   }
 }
 </style>
