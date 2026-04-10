@@ -156,52 +156,32 @@ a{text-decoration:none;color:inherit;}
   /* nav links +30% bigger */
   .nav-sub { font-size: 0.975rem; }
 
-  /* app = full viewport, no scroll */
-  .app {
-    height: 100vh;
-    height: 100dvh;
-    overflow: hidden;
-  }
-
-  /* mobile-layout fills remaining space after nav */
+  /* mobile-layout visible and flex */
   #mobile-layout {
     display: flex !important;
     flex-direction: column;
     flex: 1;
     min-height: 0;
-    overflow: hidden;
   }
 
-  /* page-home active: fill all space */
+  /* page-home active: fill viewport using dvh, nav is sticky so we use flex */
   #page-home.active {
     flex: 1;
     display: flex;
     flex-direction: column;
     min-height: 0;
-    overflow: hidden;
   }
 
-  /* blocks: fill page-home exactly, no scroll */
+  /* blocks: split remaining height into 3 equal rows */
   #page-home.active .blocks {
     flex: 1;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     min-height: 0;
-    overflow: hidden;
   }
 
   #page-home.active .block {
     min-height: 0;
-    overflow: hidden;
-  }
-
-  /* subpages: fill all space, allow scroll inside */
-  .page.active:not(#page-home) {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    overflow: hidden;
   }
 }
 </style>
