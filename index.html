@@ -153,10 +153,20 @@ a{text-decoration:none;color:inherit;}
 @media (max-width:767px) {
   .desktop-panel{display:none !important;}
   .nav-sub{font-size:0.975rem;}
-  #mobile-layout{display:flex;flex-direction:column;pointer-events:auto;}
-  #page-home.active{display:flex;flex-direction:column;height:calc(var(--vh,1vh)*100 - 90px);}
-  #page-home.active .blocks{flex:1;display:grid;grid-template-rows:repeat(3,1fr);min-height:0;overflow:hidden;}
+  /* app fills screen, flex column */
+  .app{display:flex;flex-direction:column;min-height:100vh;}
+  /* nav stays at top, doesn't shrink */
+  .nav{position:sticky;top:0;flex-shrink:0;}
+  /* mobile-layout takes all remaining space */
+  #mobile-layout{display:flex !important;flex-direction:column;flex:1;min-height:0;}
+  /* active page fills mobile-layout */
+  .page.active{flex:1;min-height:0;}
+  /* page-home: blocks fill it */
+  #page-home.active{overflow:hidden;}
+  #page-home.active .blocks{height:100%;display:grid;grid-template-rows:repeat(3,1fr);}
   #page-home.active .block{min-height:0;overflow:hidden;}
+  /* subpages: allow scroll */
+  .page.active .inner-page{overflow-y:auto;}
 }
 </style>
 </head>
@@ -470,14 +480,6 @@ a{text-decoration:none;color:inherit;}
 
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Fix mobile viewport height
-function setVH() {
-  var vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', vh + 'px');
-}
-setVH();
-window.addEventListener('resize', setVH);
-
 var PANEL_MAP = {
   'home':'panel-home','p1':'panel-p1','p2':'panel-p2','p3':'panel-p3',
   'uslugi':'panel-uslugi','onas':'panel-onas','adhd':'panel-adhd','kontakt':'panel-kontakt'
