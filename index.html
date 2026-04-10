@@ -46,6 +46,7 @@ a{text-decoration:none;color:inherit;}
 
 /* BLOCKS shared styles */
 .blocks{display:grid;grid-template-rows:repeat(3,minmax(110px,1fr));flex:1;min-height:0;}
+#mobile-layout #page-home{display:flex;flex-direction:column;flex:1;}
 .block{position:relative;overflow:hidden;display:flex;flex-direction:column;
   justify-content:flex-start;padding:14px 14px 14px 22px;cursor:pointer;
   transition:filter .25s;min-height:110px;}
@@ -91,6 +92,7 @@ a{text-decoration:none;color:inherit;}
 .home-btn{display:flex;align-items:center;justify-content:center;font-size:var(--fs-small);color:var(--c-dim);cursor:pointer;margin-top:32px;padding:16px;border:1px solid rgba(255,255,255,.08);letter-spacing:.12em;text-transform:uppercase;transition:all .2s;min-height:48px;}
 .home-btn:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2);}
 
+.desktop-panel{display:none;}
 /* Desktop layout hidden on mobile */
 #desktop-layout{display:none;}
 
@@ -298,7 +300,7 @@ a{text-decoration:none;color:inherit;}
       </div>
       <div class="contact-line">
         <div class="contact-label">Email</div>
-        <div class="contact-value"><a href="mailto:roman.jedrkowiak@adhdwarsaw.pl" style="color:rgba(255,255,255,0.65);text-decoration:none;">roman.jedrkowiak@adhdwarsaw.pl</a></div>
+        <div class="contact-value"><a href="/cdn-cgi/l/email-protection#4f3d20222e2161252a2b3d242038262e240f2e2b272b382e3d3c2e38613f23" style="color:rgba(255,255,255,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="7604191b1718581c1312041d19011f171d3617121e1201170405170158061a">[email&#160;protected]</span></a></div>
       </div>
       <div class="contact-line">
         <div class="contact-label">Tel</div>
@@ -435,7 +437,7 @@ a{text-decoration:none;color:inherit;}
       </div>
       <div class="contact-line">
         <div class="contact-label">Email</div>
-        <div class="contact-value"><a href="mailto:roman.jedrkowiak@adhdwarsaw.pl" style="color:rgba(255,255,255,0.65);text-decoration:none;">roman.jedrkowiak@adhdwarsaw.pl</a></div>
+        <div class="contact-value"><a href="/cdn-cgi/l/email-protection#3f4d50525e5111555a5b4d545048565e547f5e5b575b485e4d4c5e48114f53" style="color:rgba(255,255,255,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="40322f2d212e6e2a2524322b2f3729212b00212428243721323321376e302c">[email&#160;protected]</span></a></div>
       </div>
       <div class="contact-line">
         <div class="contact-label">Tel</div>
@@ -455,7 +457,7 @@ a{text-decoration:none;color:inherit;}
 </div>
 
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var PANEL_MAP = {
   'home':'panel-home','p1':'panel-p1','p2':'panel-p2','p3':'panel-p3',
   'uslugi':'panel-uslugi','onas':'panel-onas','adhd':'panel-adhd','kontakt':'panel-kontakt'
@@ -464,19 +466,16 @@ var BLOCK_MAP = {'p1':'blok1','p2':'blok2','p3':'blok3'};
 
 function showPage(id) {
   if (window.innerWidth >= 768) {
-    // Switch desktop panel
     document.querySelectorAll('.d-panel').forEach(function(p){ p.classList.remove('active'); });
     var pid = PANEL_MAP[id] || 'panel-home';
     var panel = document.getElementById(pid);
     if (panel) panel.classList.add('active');
-    // Highlight block
     document.querySelectorAll('#desktop-blocks .block').forEach(function(b){ b.classList.remove('is-active'); });
     if (BLOCK_MAP[id]) {
       var blk = document.getElementById(BLOCK_MAP[id]);
       if (blk) blk.classList.add('is-active');
     }
   } else {
-    // Mobile
     document.querySelectorAll('#mobile-layout .page').forEach(function(p){ p.classList.remove('active'); });
     var target = document.getElementById('page-' + id);
     if (!target) target = document.getElementById('page-home');
@@ -484,7 +483,6 @@ function showPage(id) {
   }
 }
 
-// Mobile init
 if (window.innerWidth < 768) {
   var h = document.getElementById('page-home');
   if (h) h.classList.add('active');
