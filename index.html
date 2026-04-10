@@ -149,30 +149,26 @@ a{text-decoration:none;color:inherit;}
   .block{min-height:100px;}
 }
 
-/* ── MOBILE HOME: one block fills full screen ── */
+/* ── MOBILE (<768px) ── */
 @media (max-width:767px) {
-  /* page-home fills viewport minus nav */
-  #page-home {
-    display: flex;
-    flex-direction: column;
+  /* hide desktop-panel */
+  .desktop-panel { display: none !important; }
+  /* nav links +30% bigger */
+  .nav-sub { font-size: 0.975rem; }
+  /* page-home when active: full screen, blocks fill it */
+  #page-home.active {
     height: calc(100vh - 60px);
-    min-height: calc(100vh - 60px);
+    flex-direction: column;
   }
-  /* blocks fill all available height */
-  #page-home .blocks {
+  #page-home.active .blocks {
     flex: 1;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     min-height: 0;
   }
-  /* each block: no min-height override, let grid decide */
-  #page-home .block {
+  #page-home.active .block {
     min-height: 0;
   }
-  /* hide desktop-panel on mobile */
-  .desktop-panel { display: none !important; }
-  /* nav font size +30% on mobile */
-  .nav-sub { font-size: 0.975rem; }
 }
 </style>
 </head>
